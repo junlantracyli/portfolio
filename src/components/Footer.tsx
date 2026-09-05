@@ -5,8 +5,8 @@ import { tapScale } from "@/lib/motion";
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col gap-6 border-t border-white/10 pt-8 text-lg text-white/50 light:border-black/10 light:text-black/50">
-      <p className="text-base italic text-white/40 light:text-black/40">
+    <footer className="flex flex-col gap-6 border-t border-current/10 pt-8 text-lg text-current/50">
+      <p className="text-base italic text-current/40">
         Human by day. Creative by night. Solving problems one pixel at a
         time.
       </p>
@@ -16,7 +16,7 @@ export default function Footer() {
           <motion.a
             {...tapScale}
             href="mailto:junlantracyli@gmail.com"
-            className="transition-colors hover:text-white light:hover:text-black"
+            className="transition-colors hover:text-current"
           >
             Email
           </motion.a>
@@ -25,14 +25,14 @@ export default function Footer() {
             href="https://www.linkedin.com/in/junlantracyli"
             target="_blank"
             rel="noreferrer"
-            className="transition-colors hover:text-white light:hover:text-black"
+            className="transition-colors hover:text-current"
           >
             Linkedin
           </motion.a>
           <motion.a
             {...tapScale}
             href="#top"
-            className="transition-colors hover:text-white light:hover:text-black"
+            className="transition-colors hover:text-current"
           >
             Top ↑
           </motion.a>

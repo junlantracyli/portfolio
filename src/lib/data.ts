@@ -6,46 +6,6 @@ export type CaseStudy = {
 
 export const projects = [
   {
-    id: "riot-rad",
-    label: "RIOT RAD",
-    name: "Riot Rad",
-    year: "2026",
-    category: "personal" as const,
-    description:
-      "Riot Rad is an immersive, web-based unboxing experience designed for the Peach Riot designer toy universe.",
-    linkLabel: "riot-rad-project.vercel.app",
-    href: "https://riot-rad-project.vercel.app",
-    image: "/projects/riot-rad.png",
-    caseStudy: {
-      problem:
-        "Riot Rad started as a creative project, not a brief — born out of genuinely being a fan of Peach Riot blind boxes and wanting to bring that unboxing thrill to the web. The idea was simple: build a virtual version of Pop Mart, something that captured the same anticipation of not knowing what you're going to get.",
-      approach:
-        "The build centered on recreating the experience of pulling a blind box from a vending machine — as a web app, in 3D. That meant working across two disciplines that don't usually meet: 3D modeling and frontend engineering. The vending machine itself went through real iteration in Spline to get its look and mechanical behavior to feel physical rather than static. The harder problem was choreography — getting 3D boxes to visibly eject from the machine and animate into view, then bridging that motion cleanly into a standard web frontend stack that wasn't built with that kind of sequencing in mind. It required piecing together a pipeline — 3D authoring, export, and in-browser animation — that doesn't have an obvious off-the-shelf path.",
-      outcome:
-        "What shipped is a fun, self-contained pop-up experience — less a product than a hobby made real, built around user experience rather than a business goal. Looking back, spending more time upfront on visual direction and library choice would have saved some of the friction in the 3D implementation. It's also a project with room to grow — a natural candidate to revisit and push further later.",
-    },
-  },
-  {
-    id: "temper-lab",
-    label: "TEMPER LAB",
-    name: "Temper Lab",
-    year: "2026",
-    category: "personal" as const,
-    description:
-      "Temper Lab is a high-performance music production environment that reimagines the traditional DAW through a cyberpunk lens.",
-    linkLabel: "temper-lab-project.netlify.app",
-    image: "/projects/temper-lab.png",
-    href: "https://temper-lab-project.netlify.app",
-    caseStudy: {
-      problem:
-        "Temper Lab was sparked by my own passion as a drummer — a personal itch to build a music tool made specifically for drummers, rather than a general-purpose DAW. The goal was to let a drummer take a track, whether vocal or instrumental, and write a drum part against it. A handful of built-in test tracks made that possible to try out immediately.",
-      approach:
-        "The main technical wall was stem separation. The vision was to let a drummer drop in any song, split it into its individual parts, and lay a custom drum part over the isolated track — which meant integrating Moises AI. But Moises AI's API wasn't available to individual developers, only businesses, which closed off the most direct path to that feature and shaped what the tool could actually do without it.",
-      outcome:
-        "What shipped is a fun tool to play with, but not yet one built for real, sustained use by drummers. Looking back, the right next step isn't more features — it's research: talking to actual drummers about what they need, rather than building outward from a personal itch, and using that to shape a tool that's genuinely adaptable to the drumming community rather than a proof of concept.",
-    },
-  },
-  {
     id: "hal9-roadmap",
     label: "HAL9 ROADMAP",
     name: "Hal9 Roadmap",
@@ -85,66 +45,45 @@ export const projects = [
         "Hypd shipped to the App Store and is still being actively iterated on a year later, without an official public launch yet. The clearest lesson in hindsight is tooling: I built the product on Lovable, and a year in, it's become a bottleneck — both the frontend and backend are difficult to move off the platform, which adds cost pressure on an already tight budget. A custom-built wrapper, owned from the start, would likely have avoided that lock-in. I've also leaned more heavily toward backend capability than frontend polish, which made it harder to know where to focus — a tension that's arguably contributed to the product still not having shipped its official launch.",
     },
   },
-];
-
-export const notes = [
   {
-    title: "Interfaces that respect a deadline",
-    date: "JUL 2026",
+    id: "riot-rad",
+    label: "RIOT RAD",
+    name: "Riot Rad",
+    year: "2026",
+    category: "personal" as const,
     description:
-      "What I keep from a build when the timeline gets cut in half, and what goes first.",
+      "Riot Rad is an immersive, web-based unboxing experience designed for the Peach Riot designer toy universe.",
+    linkLabel: "riot-rad-project.vercel.app",
+    href: "https://riot-rad-project.vercel.app",
+    image: "/projects/riot-rad.png",
+    caseStudy: {
+      problem:
+        "Riot Rad started as a creative project, not a brief — born out of genuinely being a fan of Peach Riot blind boxes and wanting to bring that unboxing thrill to the web. The idea was simple: build a virtual version of Pop Mart, something that captured the same anticipation of not knowing what you're going to get.",
+      approach:
+        "The build centered on recreating the experience of pulling a blind box from a vending machine — as a web app, in 3D. That meant working across two disciplines that don't usually meet: 3D modeling and frontend engineering. The vending machine itself went through real iteration in Spline to get its look and mechanical behavior to feel physical rather than static. The harder problem was choreography — getting 3D boxes to visibly eject from the machine and animate into view, then bridging that motion cleanly into a standard web frontend stack that wasn't built with that kind of sequencing in mind. It required piecing together a pipeline — 3D authoring, export, and in-browser animation — that doesn't have an obvious off-the-shelf path.",
+      outcome:
+        "What shipped is a fun, self-contained pop-up experience — less a product than a hobby made real, built around user experience rather than a business goal. Looking back, spending more time upfront on visual direction and library choice would have saved some of the friction in the 3D implementation. It's also a project with room to grow — a natural candidate to revisit and push further later.",
+    },
   },
   {
-    title: "Prototyping with LLMs in the loop",
-    date: "MAY 2026",
+    id: "temper-lab",
+    label: "TEMPER LAB",
+    name: "Temper Lab",
+    year: "2026",
+    category: "personal" as const,
     description:
-      "Notes from shipping Hal9 Roadmap: where the model helps, and where it quietly gets in the way.",
-  },
-  {
-    title: "A scrapbook argument for texture",
-    date: "FEB 2026",
-    description:
-      "Why physical reference still beats a moodboard folder, and how I use both.",
-  },
-];
-
-export const skillFolders = [
-  {
-    id: "skills",
-    name: "Skills",
-    items: [
-      {
-        title: "Technical & Systems",
-        bullets: [
-          "Full-Stack Development",
-          "Backend & API Architecture",
-          "LLM Workflows & Integration",
-          "Containerization & Deployment",
-        ],
-      },
-      {
-        title: "Product & Strategy",
-        bullets: [
-          "Product Engineering",
-          "UI/UX & Design Systems",
-          "Interactive Web Experiences",
-          "Zero-to-One Product Building",
-        ],
-      },
-    ],
-  },
-  {
-    id: "stack",
-    name: "Stack",
-    items: [
-      { title: "TypeScript", slug: "typescript" },
-      { title: "Python", slug: "python" },
-      { title: "React", slug: "react" },
-      { title: "FastAPI", slug: "fastapi" },
-      { title: "Docker", slug: "docker" },
-      { title: "Git", slug: "git" },
-    ],
+      "Temper Lab is a high-performance music production environment that reimagines the traditional DAW through a cyberpunk lens.",
+    linkLabel: "temper-lab-project.netlify.app",
+    image: "/projects/temper-lab.png",
+    href: "https://temper-lab-project.netlify.app",
+    caseStudy: {
+      problem:
+        "Temper Lab was sparked by my own passion as a drummer — a personal itch to build a music tool made specifically for drummers, rather than a general-purpose DAW. The goal was to let a drummer take a track, whether vocal or instrumental, and write a drum part against it. A handful of built-in test tracks made that possible to try out immediately.",
+      approach:
+        "The main technical wall was stem separation. The vision was to let a drummer drop in any song, split it into its individual parts, and lay a custom drum part over the isolated track — which meant integrating Moises AI. But Moises AI's API wasn't available to individual developers, only businesses, which closed off the most direct path to that feature and shaped what the tool could actually do without it.",
+      outcome:
+        "What shipped is a fun tool to play with, but not yet one built for real, sustained use by drummers. Looking back, the right next step isn't more features — it's research: talking to actual drummers about what they need, rather than building outward from a personal itch, and using that to shape a tool that's genuinely adaptable to the drumming community rather than a proof of concept.",
+    },
   },
 ];
 
-export const navItems = ["Projects", "About", "Skills"];

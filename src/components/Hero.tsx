@@ -1,30 +1,41 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { tapScale } from "@/lib/motion";
 
-function VerifiedBadge() {
+const cyclingPhrases = ["AI TOOLS", "DIGITAL PRODUCTS", "CREATIVE SYSTEMS"];
+
+function CyclingWord() {
+  const [index, setIndex] = useState(0);
+  const phrase = cyclingPhrases[index];
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % cyclingPhrases.length);
+    }, 2200);
+    return () => clearInterval(id);
+  }, []);
+
   return (
-    <svg
-      width="28"
-      height="28"
-      viewBox="0 0 24 24"
-      fill="none"
-      className="shrink-0"
-    >
-      <path
-        d="M12 2.5 14.39 4.9 17.7 4.3 18.3 7.61 20.7 10 19.5 13.11 20.7 16.22 18.3 18.61 17.7 21.92 14.39 21.32 12 23.72 9.61 21.32 6.3 21.92 5.7 18.61 3.3 16.22 4.5 13.11 3.3 10 5.7 7.61 6.3 4.3 9.61 4.9 12 2.5Z"
-        fill="#3B9CF6"
-      />
-      <path
-        d="M8.5 12.3 10.8 14.6 15.5 9.6"
-        stroke="white"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+    <span className="relative block h-[1.05em] w-full overflow-hidden">
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={phrase}
+          initial={{ y: "100%", opacity: 0 }}
+          animate={{ y: "0%", opacity: 1 }}
+          exit={{ y: "-100%", opacity: 0 }}
+          transition={{ duration: 0.45, ease: "easeInOut" }}
+          onClick={() =>
+            setIndex((i) => (i + 1) % cyclingPhrases.length)
+          }
+          className="absolute left-0 top-0 block w-full cursor-pointer whitespace-nowrap text-[#f2705f]"
+        >
+          {phrase}
+        </motion.span>
+      </AnimatePresence>
+    </span>
   );
 }
 
@@ -34,59 +45,56 @@ export default function Hero() {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="flex flex-col gap-6"
+      className="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-[1.7fr_1fr]"
     >
-      <div className="relative h-32 w-32 shrink-0 overflow-hidden rounded-full border border-white/10 light:border-black/10">
-        <Image
-          src="/hero/profile.jpg"
-          alt="Tracy Li"
-          fill
-          sizes="128px"
-          className="object-cover"
-          priority
-        />
-        <span className="absolute bottom-1.5 right-1.5 h-4 w-4 rounded-full border-[3px] border-[#0b0b0c] bg-[#22c55e] light:border-[#f7f6f4]" />
-      </div>
-
-      <div className="flex flex-col gap-6">
-        <div>
-          <h1 className="flex items-center gap-3 text-7xl sm:text-8xl">
-            Tracy Li
-            <VerifiedBadge />
+      <div className="flex flex-col justify-between gap-6">
+        <div className="flex flex-col gap-6">
+          <h1
+            className="flex flex-col leading-[1.05]"
+            style={{ fontSize: "clamp(1.9rem, 4.2vw, 4.5rem)" }}
+          >
+            <span>I build</span>
+            <CyclingWord />
+            <span>that feel human</span>
           </h1>
-          <p className="mt-3 text-xl text-white/55 light:text-black/55">
-            Product Engineer · AI Engineer · Creative Technologist
+
+          <p className="max-w-2xl text-2xl leading-relaxed text-current/70 sm:text-3xl">
+            I bridge technical constraints and user needs, using code as a
+            creative medium to build digital experiences that are
+            distinctly human.
           </p>
         </div>
 
-        <p className="max-w-xl text-2xl leading-relaxed text-white/70 light:text-black/70">
-          I bridge technical constraints and human needs, using code as a
-          creative medium to build digital experiences that are distinctly
-          human.
-        </p>
-
-        <p className="text-xl text-white/55 light:text-black/55">
-          Seattle, WA 🏔
-        </p>
-
         <div className="flex flex-wrap items-center gap-3 pt-2">
-          <motion.a
-            {...tapScale}
-            href="mailto:junlantracyli@gmail.com"
-            className="rounded-full bg-white px-6 py-3 text-lg font-medium text-black transition-opacity hover:opacity-85 light:bg-black light:text-white"
-          >
-            Get in touch
-          </motion.a>
           <motion.a
             {...tapScale}
             href="https://www.linkedin.com/in/junlantracyli"
             target="_blank"
             rel="noreferrer"
-            className="rounded-full border border-white/15 px-6 py-3 text-lg text-white/75 transition-colors hover:text-white light:border-black/15 light:text-black/75 light:hover:text-black"
+            className="rounded-full bg-[#f2705f] px-8 py-4 text-xl font-medium text-[#2e1512] transition-opacity hover:opacity-85"
           >
-            Linkedin
+            LinkedIn
+          </motion.a>
+          <motion.a
+            {...tapScale}
+            href="#work"
+            className="rounded-full border border-current/15 px-8 py-4 text-xl text-current/75 transition-colors hover:text-current"
+          >
+            See the work
           </motion.a>
         </div>
+      </div>
+
+      <div className="relative ml-auto -mr-6 aspect-[3/4] w-full max-w-[340px] shrink-0 overflow-hidden rounded-t-[260px] rounded-b-[48px] sm:-mr-12 sm:max-w-[420px] lg:aspect-auto lg:h-full lg:-mr-20 lg:max-w-[480px] xl:-mr-28">
+        <Image
+          src="/hero/profile.jpg"
+          alt="Tracy Li"
+          fill
+          sizes="(min-width: 1024px) 760px, (min-width: 640px) 680px, 560px"
+          quality={90}
+          className="object-cover"
+          priority
+        />
       </div>
     </motion.section>
   );

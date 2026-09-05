@@ -7,37 +7,42 @@ html {
 }
 
 :root {
-  --background: #0b0b0c;
-  --foreground: #f5f4f2;
+  --background: #2e1512;
+  --foreground: #f7ecdf;
+  --accent: #f2705f;
 }
 
 .light {
-  --background: #f7f6f4;
-  --foreground: #171614;
+  --background: #f7ecdf;
+  --foreground: #2e1512;
+  --accent: #f2705f;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-dm-sans);
-  --font-serif: var(--font-instrument-serif);
-  --font-mono: var(--font-jetbrains-mono);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-space-mono);
+  --font-serif: var(--font-fraunces);
+  --font-mono: var(--font-space-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), "Courier New", monospace;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 h1,
 h2 {
   font-family: var(--font-serif), Georgia, serif;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .label {
+  display: inline-block;
+  margin-left: -0.08em;
   font-family: var(--font-mono), monospace;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -46,8 +51,8 @@ h2 {
 .diagonal-hatch {
   background-image: repeating-linear-gradient(
     45deg,
-    rgba(245, 244, 242, 0.07),
-    rgba(245, 244, 242, 0.07) 1px,
+    rgba(247, 236, 223, 0.07),
+    rgba(247, 236, 223, 0.07) 1px,
     transparent 1px,
     transparent 7px
   );
@@ -56,8 +61,8 @@ h2 {
 .light .diagonal-hatch {
   background-image: repeating-linear-gradient(
     45deg,
-    rgba(23, 22, 20, 0.06),
-    rgba(23, 22, 20, 0.06) 1px,
+    rgba(46, 21, 18, 0.06),
+    rgba(46, 21, 18, 0.06) 1px,
     transparent 1px,
     transparent 7px
   );
@@ -65,7 +70,7 @@ h2 {
 
 .dot-grid {
   background-image: radial-gradient(
-    rgba(245, 244, 242, 0.14) 1.5px,
+    rgba(247, 236, 223, 0.14) 1.5px,
     transparent 1.5px
   );
   background-size: 22px 22px;
@@ -73,7 +78,7 @@ h2 {
 
 .light .dot-grid {
   background-image: radial-gradient(
-    rgba(23, 22, 20, 0.12) 1.5px,
+    rgba(46, 21, 18, 0.12) 1.5px,
     transparent 1.5px
   );
   background-size: 22px 22px;

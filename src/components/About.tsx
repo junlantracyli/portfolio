@@ -4,14 +4,6 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-type Sticker = {
-  src: string;
-  x: string;
-  y: string;
-  rotate: number;
-  size: number;
-};
-
 type Card = {
   id: string;
   kind: "photo" | "quote";
@@ -21,7 +13,6 @@ type Card = {
   y: string;
   photoSrc?: string;
   photoAlt?: string;
-  sticker?: Sticker;
 };
 
 const initialCards: Card[] = [
@@ -30,49 +21,36 @@ const initialCards: Card[] = [
     kind: "photo",
     rotate: -6,
     tapeRotate: 4,
-    x: "4%",
-    y: "22%",
+    x: "6%",
+    y: "20%",
     photoSrc: "/about/photos/road-trip.jpg",
     photoAlt: "Road trip photo",
-    sticker: { src: "/about/stickers/sparkle.png", x: "78%", y: "82%", rotate: -8, size: 34 },
   },
   {
     id: "sunset",
     kind: "photo",
     rotate: 3,
     tapeRotate: -5,
-    x: "26%",
-    y: "10%",
+    x: "32%",
+    y: "8%",
     photoSrc: "/about/photos/sunset.jpg",
     photoAlt: "Hiking photo",
-    sticker: { src: "/about/stickers/star.png", x: "82%", y: "78%", rotate: 6, size: 30 },
   },
   {
     id: "quote",
     kind: "quote",
     rotate: 4,
     tapeRotate: -3,
-    x: "50%",
-    y: "8%",
-    sticker: { src: "/about/stickers/flower.png", x: "-8%", y: "50%", rotate: -4, size: 34 },
-  },
-  {
-    id: "screenshot",
-    kind: "photo",
-    rotate: -3,
-    tapeRotate: 5,
-    x: "72%",
-    y: "24%",
-    photoSrc: "/about/photos/screenshot.jpg",
-    photoAlt: "Love lock heart photo",
+    x: "58%",
+    y: "12%",
   },
   {
     id: "polaroid",
     kind: "photo",
     rotate: 5,
     tapeRotate: -4,
-    x: "40%",
-    y: "48%",
+    x: "42%",
+    y: "50%",
     photoSrc: "/about/photos/polaroid.jpg",
     photoAlt: "Postcard from Earth photo",
   },
@@ -83,10 +61,8 @@ function PhotoImage({ src, alt }: { src: string; alt: string }) {
 
   if (errored) {
     return (
-      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-white/10 to-white/[0.02] light:from-black/10 light:to-black/[0.02]">
-        <span className="label text-[10px] text-white/30 light:text-black/30">
-          {alt}
-        </span>
+      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-current/10 to-current/[0.02]">
+        <span className="label text-[10px] text-current/30">{alt}</span>
       </div>
     );
   }
@@ -103,33 +79,6 @@ function PhotoImage({ src, alt }: { src: string; alt: string }) {
   );
 }
 
-function StickerBadge({ sticker }: { sticker: Sticker }) {
-  const [errored, setErrored] = useState(false);
-  if (errored) return null;
-
-  return (
-    <div
-      className="pointer-events-none absolute drop-shadow-lg"
-      style={{
-        left: sticker.x,
-        top: sticker.y,
-        width: sticker.size,
-        height: sticker.size,
-        rotate: `${sticker.rotate}deg`,
-      }}
-    >
-      <Image
-        src={sticker.src}
-        alt=""
-        fill
-        sizes="40px"
-        className="object-contain"
-        onError={() => setErrored(true)}
-      />
-    </div>
-  );
-}
-
 export default function About() {
   const boardRef = useRef<HTMLDivElement>(null);
   const [order, setOrder] = useState(initialCards.map((card) => card.id));
@@ -139,13 +88,13 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="scroll-mt-24">
-      <p className="label text-base text-white/40 light:text-black/40">
-        About
-      </p>
-      <h2 className="mt-3 text-6xl sm:text-7xl">Hello — I&rsquo;m Tracy.</h2>
+    <section id="about" className="scroll-mt-24 pt-4">
+      <p className="label text-base text-current/45">About</p>
+      <h2 className="mt-4 pb-2 text-6xl leading-[1.15] sm:text-7xl">
+        Hello — I&rsquo;m Tracy.
+      </h2>
 
-      <div className="mt-6 flex max-w-3xl flex-col gap-4 text-2xl leading-relaxed text-white/70 light:text-black/70">
+      <div className="mt-6 flex max-w-3xl flex-col gap-4 text-2xl leading-relaxed text-current/70">
         <p>
           I design and engineer products that value your time as much as
           your attention. I&rsquo;m a big fan of simple systems and
@@ -165,7 +114,7 @@ export default function About() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="relative mt-10 aspect-[16/9] w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] light:border-black/10 light:bg-black/[0.02]"
+        className="relative mt-10 aspect-[16/9] w-full overflow-hidden rounded-2xl border border-current/10 bg-current/[0.03]"
       >
         <div className="dot-grid absolute inset-0" />
 
@@ -205,20 +154,18 @@ export default function About() {
                     </div>
                   </div>
                 ) : (
-                  <div className="w-56 rounded-sm bg-[#f3efe6] p-4 shadow-lg light:bg-white">
+                  <div className="w-56 rounded-sm bg-[#f7ecdf] p-4 shadow-lg light:bg-white">
                     <p className="font-serif text-lg italic text-black/80">
                       &ldquo;Leave no stone unturned.&rdquo;
                     </p>
                   </div>
                 )}
-
-                {card.sticker && <StickerBadge sticker={card.sticker} />}
               </div>
             </motion.div>
           );
         })}
 
-        <span className="label absolute bottom-4 right-5 text-sm text-white/30 light:text-black/30">
+        <span className="label absolute bottom-4 right-5 text-sm text-current/30">
           Try moving things
         </span>
       </motion.div>
