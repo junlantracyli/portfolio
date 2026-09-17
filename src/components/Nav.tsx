@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
@@ -46,21 +47,26 @@ export default function Nav() {
   }, [isLight]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-current/10 bg-background/85 backdrop-blur">
-      <div className="mx-auto flex w-full max-w-[1800px] items-center justify-between gap-4 px-6 py-4 sm:px-12 lg:px-20 xl:px-28">
-        <Link href="/#top" className="flex items-center gap-3 text-lg font-medium">
-          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#f2705f] text-sm text-[#2e1512]">
-            TL
-          </span>
+    <header className="sticky top-0 z-40 border-b border-[#2e1512]/10 bg-primary/95 text-[#2e1512] backdrop-blur">
+      <div className="mx-auto flex w-full max-w-[1800px] items-center justify-between gap-4 px-6 py-7 sm:px-12 lg:px-20 xl:px-28">
+        <Link href="/#top" className="flex items-center gap-4 text-2xl font-medium">
+          <Image
+            src="/logo/jtl-logo.png"
+            alt="JTL logo"
+            width={64}
+            height={64}
+            className="h-16 w-16 shrink-0"
+            priority
+          />
           Tracy Li
           <VerifiedBadge />
           <span className="hidden text-current/20 sm:inline">|</span>
-          <span className="label hidden text-sm font-normal text-current/45 sm:inline">
+          <span className="label hidden text-lg font-normal text-current/70 sm:inline">
             Seattle, WA 🏔
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex">
+        <nav className="hidden items-center gap-12 md:flex">
           {navLinks.map((link) => {
             const active =
               link.href === "/about" ? pathname === "/about" : false;
@@ -69,10 +75,10 @@ export default function Nav() {
                 key={link.label}
                 {...tapScale}
                 href={link.href}
-                className={`label text-sm transition-colors ${
+                className={`label text-lg transition-colors ${
                   active
                     ? "text-current"
-                    : "text-current/55 hover:text-current"
+                    : "text-current/80 hover:text-current"
                 }`}
               >
                 {link.label}
@@ -81,19 +87,19 @@ export default function Nav() {
           })}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <motion.button
             {...tapScale}
             role="switch"
             aria-checked={!isLight}
             onClick={() => setIsLight((l) => !l)}
-            className="relative flex h-8 w-14 items-center rounded-full bg-current/10 px-1 transition-colors"
+            className="relative flex h-9 w-16 items-center rounded-full bg-current/20 px-1 transition-colors"
           >
             <motion.span
               layout
               transition={{ type: "spring", stiffness: 500, damping: 30 }}
-              className={`flex h-6 w-6 items-center justify-center rounded-full bg-[#2e1512] text-xs shadow light:bg-white ${
-                isLight ? "translate-x-0" : "translate-x-6"
+              className={`flex h-7 w-7 items-center justify-center rounded-full bg-[#2e1512] text-sm shadow light:bg-white ${
+                isLight ? "translate-x-0" : "translate-x-7"
               }`}
             >
               {isLight ? "☀️" : "🌙"}
@@ -103,7 +109,7 @@ export default function Nav() {
           <motion.a
             {...tapScale}
             href="mailto:junlantracyli@gmail.com"
-            className="hidden rounded-full bg-[#f2705f] px-5 py-2.5 text-sm font-medium text-[#2e1512] transition-opacity hover:opacity-85 sm:inline-block"
+            className="hidden rounded-full bg-[#2e1512] px-6 py-3.5 text-lg font-medium text-accent transition-opacity hover:opacity-85 sm:inline-block"
           >
             Get in touch
           </motion.a>

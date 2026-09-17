@@ -12,7 +12,7 @@ export default function PullQuote() {
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="-mx-6 flex flex-col items-center gap-6 rounded-3xl bg-[#2e1512] px-6 py-16 text-center text-[#f7ecdf] sm:-mx-12 sm:px-12 xl:-mx-16 xl:px-16"
     >
-      <div className="relative h-20 w-20 overflow-hidden rounded-full border-2 border-[#f2705f]">
+      <div className="relative h-20 w-20 overflow-hidden rounded-full border-2 border-[#ff775e]">
         <Image
           src="/hero/profile.jpg"
           alt="Tracy Li"

@@ -76,7 +76,7 @@ export default function Projects() {
                     <p className="max-w-2xl text-xl leading-relaxed text-current/60">
                       {project.description}
                     </p>
-                    <span className="label mt-2 text-base text-current/45 transition-colors group-hover:text-[#f2705f]">
+                    <span className="label mt-2 text-base text-current/45 transition-colors group-hover:text-[#ff775e]">
                       {hasCaseStudy ? "Read case study ↗" : `${project.linkLabel} ↗`}
                     </span>
                   </div>

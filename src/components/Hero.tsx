@@ -7,6 +7,20 @@ import { tapScale } from "@/lib/motion";
 
 const cyclingPhrases = ["AI TOOLS", "DIGITAL PRODUCTS", "CREATIVE SYSTEMS"];
 
+function LinkedInIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="shrink-0"
+    >
+      <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.27 2.38 4.27 5.47v6.27zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45z" />
+    </svg>
+  );
+}
+
 function CyclingWord() {
   const [index, setIndex] = useState(0);
   const phrase = cyclingPhrases[index];
@@ -30,7 +44,7 @@ function CyclingWord() {
           onClick={() =>
             setIndex((i) => (i + 1) % cyclingPhrases.length)
           }
-          className="absolute left-0 top-0 block w-full cursor-pointer whitespace-nowrap text-[#f2705f]"
+          className="absolute left-0 top-0 block w-full cursor-pointer whitespace-nowrap text-[#ff775e]"
         >
           {phrase}
         </motion.span>
@@ -51,7 +65,7 @@ export default function Hero() {
         <div className="flex flex-col gap-6">
           <h1
             className="flex flex-col leading-[1.05]"
-            style={{ fontSize: "clamp(1.9rem, 4.2vw, 4.5rem)" }}
+            style={{ fontSize: "clamp(2.3rem, 5.2vw, 5.6rem)" }}
           >
             <span>I build</span>
             <CyclingWord />
@@ -65,36 +79,47 @@ export default function Hero() {
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3 pt-2">
+        <div className="flex flex-wrap items-center gap-4 pt-2">
           <motion.a
             {...tapScale}
             href="https://www.linkedin.com/in/junlantracyli"
             target="_blank"
             rel="noreferrer"
-            className="rounded-full bg-[#f2705f] px-8 py-4 text-xl font-medium text-[#2e1512] transition-opacity hover:opacity-85"
+            className="flex items-center gap-2 rounded-full bg-[#ff775e] px-10 py-5 text-2xl font-medium text-[#2e1512] transition-opacity hover:opacity-85"
           >
+            <LinkedInIcon />
             LinkedIn
           </motion.a>
           <motion.a
             {...tapScale}
             href="#work"
-            className="rounded-full border border-current/15 px-8 py-4 text-xl text-current/75 transition-colors hover:text-current"
+            className="rounded-full border border-current/15 px-10 py-5 text-2xl text-current/75 transition-colors hover:text-current"
           >
             See the work
           </motion.a>
         </div>
       </div>
 
-      <div className="relative ml-auto -mr-6 aspect-[3/4] w-full max-w-[340px] shrink-0 overflow-hidden rounded-t-[260px] rounded-b-[48px] sm:-mr-12 sm:max-w-[420px] lg:aspect-auto lg:h-full lg:-mr-20 lg:max-w-[480px] xl:-mr-28">
-        <Image
-          src="/hero/profile.jpg"
-          alt="Tracy Li"
-          fill
-          sizes="(min-width: 1024px) 760px, (min-width: 640px) 680px, 560px"
-          quality={90}
-          className="object-cover"
-          priority
-        />
+      <div className="relative ml-auto aspect-[3/4] w-full max-w-[420px] shrink-0 sm:max-w-[520px] lg:aspect-auto lg:h-full lg:max-w-[620px]">
+        <svg width="0" height="0" className="absolute">
+          <defs>
+            <clipPath id="hero-blob-clip" clipPathUnits="objectBoundingBox">
+              <path d="M0.50,0.03 C0.65,0.00 0.82,0.05 0.90,0.18 C0.98,0.31 0.92,0.44 0.95,0.58 C0.98,0.72 1.00,0.88 0.87,0.94 C0.74,1.00 0.68,0.88 0.55,0.90 C0.42,0.92 0.32,1.02 0.20,0.96 C0.08,0.90 0.02,0.76 0.05,0.63 C0.08,0.50 -0.02,0.40 0.03,0.28 C0.08,0.15 0.20,0.06 0.33,0.05 C0.39,0.045 0.44,0.045 0.50,0.03 Z" />
+            </clipPath>
+          </defs>
+        </svg>
+
+        <div className="blob-shape relative h-full w-full overflow-hidden">
+          <Image
+            src="/hero/profile.jpg"
+            alt="Tracy Li"
+            fill
+            sizes="(min-width: 1024px) 760px, (min-width: 640px) 680px, 560px"
+            quality={90}
+            className="object-cover"
+            priority
+          />
+        </div>
       </div>
     </motion.section>
   );

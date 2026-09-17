@@ -9,19 +9,25 @@ html {
 :root {
   --background: #2e1512;
   --foreground: #f7ecdf;
-  --accent: #f2705f;
+  --primary: #ff775e;
+  --accent: #fbd5ab;
+  --offset: #f8a39d;
 }
 
 .light {
   --background: #f7ecdf;
   --foreground: #2e1512;
-  --accent: #f2705f;
+  --primary: #ff775e;
+  --accent: #fbd5ab;
+  --offset: #f8a39d;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
   --color-accent: var(--accent);
+  --color-offset: var(--offset);
   --font-sans: var(--font-space-mono);
   --font-serif: var(--font-fraunces);
   --font-mono: var(--font-space-mono);
@@ -82,4 +88,42 @@ h2 {
     transparent 1.5px
   );
   background-size: 22px 22px;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+.marquee-track:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+.blob-shape {
+  clip-path: url(#hero-blob-clip);
+}
+
+@keyframes blob-float {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(6px, -10px) rotate(4deg);
+  }
+  66% {
+    transform: translate(-6px, 8px) rotate(-3deg);
+  }
+}
+
+.animate-blob-float {
+  animation: blob-float 9s ease-in-out infinite;
 }
